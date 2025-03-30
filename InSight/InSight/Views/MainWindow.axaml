@@ -1,20 +1,47 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:InSight.ViewModels"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="InSight.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="InSight">
+<Window
+    Height="1024"
+    Icon="/Assets/avalonia-logo.ico"
+    Title="InSight"
+    Width="1440"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="InSight.Views.MainWindow"
+    x:DataType="vm:MainWindowViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:InSight.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
+        <!--
+            This only sets the DataContext for the previewer in an IDE,
+            to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs)
+        -->
+        <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <Grid ColumnDefinitions="300,*">
+        <Border Background="Gray" Grid.Column="0">
+            <StackPanel>
+                <Label>
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="Logo" />
+                        <TextBlock Text="InSight" />
+                    </StackPanel>
+                </Label>
+                <TextBlock Text="Preset Queries:" />
+                <Button Content="Top 5 Countries" CornerRadius="4" />
+                <Button Content="Top 10 Countries" />
+
+            </StackPanel>
+        </Border>
+        <Grid Grid.Column="2" RowDefinitions="100, *">
+            <TextBlock Text="Charts:" />
+            <WrapPanel Grid.Row="1" x:Name="ChartContainer" />
+
+        </Grid>
+    </Grid>
 
 </Window>
