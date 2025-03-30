@@ -1,0 +1,86 @@
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# Logs
+[Ll]og/
+[Ll]ogs/
+logs/
+*.log
+[Bb]uild[Ll]og.*
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+.nuget/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# NuGet Packages
+*.nupkg
+# NuGet Symbol Packages
+*.snupkg
+packages/
+
+# Others
+~$*
+*~
+CodeCoverage/
+*.tmp
+*.bak
+*.swp
+
+# MSBuild Binary and Structured Log
+*.binlog
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+
+# NUnit
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
+
+# Avalonia UI Designer Cache
+.avalonia/
+
+# JetBrains Rider IDE
+.idea/
+*.sln.iml
+
+# Visual Studio Temporary Files
+.vs/
+*.csproj.user
+
+# Visual Studio Code Workspace Files
+.vscode/
+*.code-workspace
+*.history/
+
+# macOS System Files
+.DS_Store
+
+# Windows System Files
+Thumbs.db
+
+# Ignore Secrets & User Settings
+secrets.json
+.env
+
+# Executables and Debugging Files
+*.pdb
+*.exe
+*.dll
