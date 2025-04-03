@@ -34,10 +34,10 @@
                 </Label>
                 <TextBlock Text="Preset Queries:" />
                 <Button Command="{Binding ImportDataCommand}" Content="Import Data" />
-                <Button
-                    Command="{Binding AddTotalWasteByFoodCategoryAndYearCommand}"
-                    Content="Total Food Waste in year 2021"
-                    CornerRadius="4" />
+                <Button Command="{Binding TotalWasteByFoodCategoryAndYearCommand}" Content="Total Food Waste in year 2021" />
+                <Button Command="{Binding GlobalTotalWasteTrendCommand}" Content="Global Food Waste Trend" />
+                <Button Command="{Binding GlobalTotalWasteHeatCommand}" Content="Global Food Waste Heat Map 2024" />
+
 
             </StackPanel>
         </Border>

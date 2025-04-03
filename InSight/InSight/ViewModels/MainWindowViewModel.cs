@@ -44,9 +44,26 @@ public partial class MainWindowViewModel : ViewModelBase
 
 
     [RelayCommand]
-    private void AddTotalWasteByFoodCategoryAndYear()
+    private void TotalWasteByFoodCategoryAndYear()
     {
+        if(foodWasteDataList != null)
         Charts.Add(analyzer.TotalWasteByFoodCategoryByYear(foodWasteDataList, 2021));
 
+    }
+
+    [RelayCommand]
+    private void GlobalTotalWasteTrend()
+    {
+        if(foodWasteDataList != null)
+        Charts.Add(analyzer.GlobalTotalWasteTrend(foodWasteDataList));
+    }
+
+    [RelayCommand]
+    private void GlobalTotalWasteHeat()
+    {
+        if (foodWasteDataList != null)
+        {
+            Charts.Add(analyzer.GlobalTotalWasteHeatMap2024(foodWasteDataList));
+        }
     }
 }
