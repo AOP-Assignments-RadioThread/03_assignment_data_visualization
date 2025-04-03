@@ -11,7 +11,7 @@ public class HeatMapData : ChartData
         Title = title;
         Chart = new GeoMap
         {
-            Width = 500,
+            Width = 1000,
             Height = 500,
             Series = series,
             MapProjection = MapProjection.Mercator,
