@@ -9,6 +9,7 @@
     x:Class="InSight.Views.MainWindow"
     x:DataType="vm:MainWindowViewModel"
     xmlns="https://github.com/avaloniaui"
+    xmlns:avalonia="clr-namespace:LiveChartsCore.SkiaSharpView.Avalonia;assembly=LiveChartsCore.SkiaSharpView.Avalonia"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:InSight.ViewModels"
@@ -32,14 +33,42 @@
                     </StackPanel>
                 </Label>
                 <TextBlock Text="Preset Queries:" />
-                <Button Content="Top 5 Countries" CornerRadius="4" />
-                <Button Content="Top 10 Countries" />
+                <Button Command="{Binding ImportDataCommand}" Content="Import Data" />
+                <Button
+                    Command="{Binding AddTotalWasteByFoodCategoryAndYearCommand}"
+                    Content="Total Food Waste in year 2021"
+                    CornerRadius="4" />
 
             </StackPanel>
         </Border>
         <Grid Grid.Column="2" RowDefinitions="100, *">
             <TextBlock Text="Charts:" />
-            <WrapPanel Grid.Row="1" x:Name="ChartContainer" />
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <ItemsControl ItemsSource="{Binding Charts}" x:Name="ChartsPanel">
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid RowDefinitions="50, *">
+                                <Grid Grid.ColumnDefinitions="*,*">
+                                    <TextBlock HorizontalAlignment="Left" Text="{Binding Title}" />
+                                    <Button
+                                        Command="{Binding #ChartsPanel.((vm:MainWindowViewModel)DataContext).RemoveChartCommand}"
+                                        CommandParameter="{Binding}"
+                                        Content="Remove"
+                                        Grid.Column="2"
+                                        HorizontalAlignment="Right" />
+                                </Grid>
+                                <ContentControl Content="{Binding Chart}" Grid.Row="1" />
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
 
         </Grid>
     </Grid>

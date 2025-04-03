@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InSight.Models
-{
-    class GlobalFoodWastageModel
+namespace InSight.Models;
+
+    public class FoodWasteData
     {
         public string Country { get; set; }
         public int Year { get; set; }
@@ -17,4 +17,4 @@ namespace InSight.Models
         public double Population { get; set; }
         public double HouseholdWaste { get; set; }
     }
-}
+

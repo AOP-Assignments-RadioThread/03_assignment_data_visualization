@@ -2,13 +2,14 @@
 
 namespace InSight.Models
 {
-    class ModelMapper : ClassMap<GlobalFoodWastageModel>
+    class FoodWasteDataMap : ClassMap<FoodWasteData>
     {
-        public ModelMapper() 
+        public FoodWasteDataMap() 
         {
             Map(m => m.Country).Name("Country");
             Map(m => m.Year).Name("Year");
             Map(m => m.FoodCategory).Name("Food Category");
+            Map(m => m.EconomicLoss).Name("Economic Loss (Million $)");
             Map(m => m.TotalWaste).Name("Total Waste (Tons)");
             Map(m => m.AvgWaste).Name("Avg Waste per Capita (Kg)");
             Map(m => m.Population).Name("Population (Million)");
