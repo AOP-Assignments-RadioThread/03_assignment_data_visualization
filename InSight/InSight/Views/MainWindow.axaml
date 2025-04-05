@@ -3,8 +3,8 @@
     Icon="/Assets/avalonia-logo.ico"
     Title="InSight"
     Width="1440"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    d:DesignHeight="1024"
+    d:DesignWidth="1440"
     mc:Ignorable="d"
     x:Class="InSight.Views.MainWindow"
     x:DataType="vm:MainWindowViewModel"
@@ -23,38 +23,131 @@
         <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <Grid ColumnDefinitions="300,*">
-        <Border Background="Gray" Grid.Column="0">
-            <StackPanel>
+    <Grid Background="#F8F9FA" ColumnDefinitions="300,*">
+        <Border Background="#F1F1F0" Grid.Column="0">
+            <StackPanel Margin="10">
                 <Label>
-                    <StackPanel Orientation="Horizontal" Spacing="10">
-                        <TextBlock Text="Logo" />
-                        <TextBlock Text="InSight" />
+                    <StackPanel
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal"
+                        Spacing="10">
+                        <Svg
+                            Height="60"
+                            Path="/Assets/logo.svg"
+                            Width="60" />
+                        <TextBlock
+                            FontFamily="Helvetica"
+                            FontSize="36"
+                            FontWeight="Bold"
+                            Padding="0,15,0,0"
+                            Text="InSight" />
                     </StackPanel>
                 </Label>
-                <TextBlock Text="Preset Queries:" />
-                <Button Command="{Binding ImportDataCommand}" Content="Import Data" />
-                <Button Command="{Binding TotalWasteByFoodCategoryAndYearCommand}" Content="Total Food Waste in year 2021" />
-                <Button Command="{Binding GlobalTotalWasteTrendCommand}" Content="Global Food Waste Trend" />
-                <Button Command="{Binding GlobalTotalWasteHeatCommand}" Content="Global Food Waste Heat Map 2024" />
+                <StackPanel
+                    Margin="0,10,0,0"
+                    Orientation="Horizontal"
+                    Spacing="40">
+                    <Button
+                        Background="White"
+                        Classes="iconButton"
+                        Command="{Binding ImportDataCommand}">
+                        <Svg Classes="iconButton" Path="/Assets/import.svg" />
+                    </Button>
+                    <TextBlock
+                        FontFamily="Helvetica"
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Text="{Binding DataStatus}"
+                        VerticalAlignment="Center" />
+                </StackPanel>
+                <TextBlock
+                    FontFamily="Helvetica"
+                    FontSize="24"
+                    FontWeight="Bold"
+                    Margin="0,20,0,0"
+                    Text="Preset Queries:" />
+
+                <Button Classes="sideBar" Command="{Binding TotalWasteByFoodCategoryAndYearCommand}">
+                    <Grid ColumnDefinitions="Auto, *, Auto" Width="{Binding $parent[Button].Width}">
+                        <Svg
+                            Classes="sideBarButtonIcon"
+                            Grid.Column="0"
+                            Path="/Assets/barchart.svg" />
+                        <TextBlock
+                            Classes="sideBar"
+                            Grid.Column="1"
+                            Text="Total Food Waste 2021" />
+                        <Svg
+                            Classes="sideBarButtonAddIcon"
+                            Grid.Column="2"
+                            Path="/Assets/plus.svg" />
+                    </Grid>
+                </Button>
+
+                <Button Classes="sideBar" Command="{Binding GlobalTotalWasteTrendCommand}">
+                    <Grid ColumnDefinitions="Auto, *, Auto" Width="{Binding $parent[Button].Width}">
+                        <Svg
+                            Classes="sideBarButtonIcon"
+                            Grid.Column="0"
+                            Path="/Assets/linechart.svg" />
+                        <TextBlock
+                            Classes="sideBar"
+                            Grid.Column="1"
+                            Text="Global Food Waste Trend" />
+                        <Svg
+                            Classes="sideBarButtonAddIcon"
+                            Grid.Column="2"
+                            Path="/Assets/plus.svg" />
+                    </Grid>
+                </Button>
+
+                <Button Classes="sideBar" Command="{Binding GlobalTotalWasteHeatCommand}">
+                    <Grid ColumnDefinitions="Auto, *, Auto" Width="{Binding $parent[Button].Width}">
+                        <Svg
+                            Classes="sideBarButtonIcon"
+                            Grid.Column="0"
+                            Path="/Assets/map.svg" />
+                        <TextBlock
+                            Classes="sideBar"
+                            Grid.Column="1"
+                            Text="Food Waste Heat Map 2024" />
+                        <Svg
+                            Classes="sideBarButtonAddIcon"
+                            Grid.Column="2"
+                            Path="/Assets/plus.svg" />
+                    </Grid>
+                </Button>
 
 
             </StackPanel>
         </Border>
-        <Grid Grid.Column="2" RowDefinitions="100, *">
-            <Grid Grid.ColumnDefinitions="*, *">
-                <TextBlock Grid.Column="0" Text="Charts:" />
+        <Grid Grid.Column="2" RowDefinitions="80, *">
+            <Grid Grid.ColumnDefinitions="*, *" Margin="20">
+                <TextBlock
+                    FontFamily="Helvetica"
+                    FontSize="24"
+                    FontWeight="Bold"
+                    Grid.Column="0"
+                    Text="Charts:"
+                    VerticalAlignment="Center" />
                 <StackPanel
                     Grid.Column="1"
                     HorizontalAlignment="Right"
                     Orientation="Horizontal"
                     Spacing="20">
-                    <Button Content="Undo" />
-                    <Button Content="Redo" />
+                    <Button Classes="iconButton" Command="{Binding UndoCommand}">
+                        <Svg Classes="iconButton" Path="/Assets/undo.svg" />
+                    </Button>
+                    <Button Classes="iconButton" Command="{Binding RedoCommand}">
+                        <Svg Classes="iconButton" Path="/Assets/redo.svg" />
+                    </Button>
                 </StackPanel>
             </Grid>
             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                <ItemsControl ItemsSource="{Binding Charts}" x:Name="ChartsPanel">
+                <ItemsControl
+                    ItemsSource="{Binding Charts}"
+                    Margin="20,0"
+                    x:Name="ChartsPanel">
 
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -63,18 +156,32 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Grid RowDefinitions="50, *">
-                                <Grid Grid.ColumnDefinitions="*,*">
-                                    <TextBlock HorizontalAlignment="Left" Text="{Binding Title}" />
-                                    <Button
-                                        Command="{Binding #ChartsPanel.((vm:MainWindowViewModel)DataContext).RemoveChartCommand}"
-                                        CommandParameter="{Binding}"
-                                        Content="Remove"
-                                        Grid.Column="2"
-                                        HorizontalAlignment="Right" />
+                            <Border Background="White" CornerRadius="16">
+                                <Grid RowDefinitions="50, *">
+                                    <Grid Grid.ColumnDefinitions="*,*">
+                                        <TextBlock
+                                            FontFamily="Helvetica"
+                                            FontSize="14"
+                                            FontWeight="Bold"
+                                            HorizontalAlignment="Left"
+                                            Margin="10,0,0,0"
+                                            Text="{Binding Title}"
+                                            VerticalAlignment="Center" />
+                                        <Button
+                                            Classes="iconButton"
+                                            Command="{Binding #ChartsPanel.((vm:MainWindowViewModel)DataContext).RemoveChartCommand}"
+                                            CommandParameter="{Binding}"
+                                            Grid.Column="2"
+                                            HorizontalAlignment="Right">
+                                            <Svg Classes="iconButton" Path="/Assets/remove.svg" />
+                                        </Button>
+                                    </Grid>
+                                    <ContentControl
+                                        Content="{Binding Chart}"
+                                        Grid.Row="1"
+                                        Height="500" />
                                 </Grid>
-                                <ContentControl Content="{Binding Chart}" Grid.Row="1" />
-                            </Grid>
+                            </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>

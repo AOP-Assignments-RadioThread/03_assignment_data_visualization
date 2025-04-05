@@ -1,0 +1,73 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Background="#D9D9D9" Padding="20">
+            <!--  Add Controls for Previewer Here  -->
+            <Button Classes="iconButton">
+                <Svg Classes="iconButton" Path="/Assets/import.svg" />
+            </Button>
+        </Border>
+    </Design.PreviewWith>
+
+    <Style Selector="TextBlock.helvetica">
+        <Setter Property="FontFamily" Value="Helvetica" />
+    </Style>
+
+    <Style Selector="Button.helvetica">
+        <Setter Property="FontFamily" Value="Helvetica" />
+    </Style>
+
+    <Style Selector="Button.sideBar">
+        <Setter Property="FontFamily" Value="Helvetica" />
+        <Setter Property="CornerRadius" Value="15" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="Width" Value="270" />
+        <Setter Property="Height" Value="60" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+
+    <Style Selector="Button.sideBar:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BoxShadow" Value="0 4 10 0 #1A000000" />
+    </Style>
+
+    <Style Selector="Svg.sideBarButtonIcon">
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="15 0 0 0" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
+
+    <Style Selector="Svg.sideBarButtonAddIcon">
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="IsVisible" Value="True" />
+        <Setter Property="Margin" Value="0 0 15 0" />
+    </Style>
+
+    <Style Selector="TextBlock.sideBar">
+        <Setter Property="FontFamily" Value="Helvetica" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="15 0 0 0 " />
+    </Style>
+
+    <Style Selector="Button.iconButton">
+        <Setter Property="Width" Value="50" />
+        <Setter Property="Height" Value="50" />
+        <Setter Property="CornerRadius" Value="15" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+
+    <Style Selector="Svg.iconButton">
+        <Setter Property="Width" Value="30" />
+        <Setter Property="Height" Value="30" />
+    </Style>
+</Styles>

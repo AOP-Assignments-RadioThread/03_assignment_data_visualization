@@ -16,7 +16,7 @@ public class CartesianChartData : ChartData
         {
             Width = 500,
             Height = 500,
-            ZoomMode = ZoomAndPanMode.Both,
+            ZoomMode = ZoomAndPanMode.PanY,
             Series = series,
             XAxes = xAxis,
             YAxes = yAxis

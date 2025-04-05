@@ -12,5 +12,14 @@
 
     <Application.Styles>
         <FluentTheme />
+        <StyleInclude Source="avares://InSight/AppStyles.axaml" />
     </Application.Styles>
+
+    <Application.Resources>
+
+        <LinearGradientBrush EndPoint="1,0" StartPoint="0,0" x:Key="GrayGradient">
+            <GradientStop Color="#F1F1F0" Offset="0" />
+            <GradientStop Color="#D9D9D9" Offset="1" />
+        </LinearGradientBrush>
+    </Application.Resources>
 </Application>
