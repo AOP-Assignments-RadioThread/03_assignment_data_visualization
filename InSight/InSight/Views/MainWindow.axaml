@@ -67,56 +67,93 @@
                     Margin="0,20,0,0"
                     Text="Preset Queries:" />
 
-                <Button Classes="sideBar" Command="{Binding TotalWasteByFoodCategoryAndYearCommand}">
-                    <Grid ColumnDefinitions="Auto, *, Auto" Width="{Binding $parent[Button].Width}">
-                        <Svg
-                            Classes="sideBarButtonIcon"
-                            Grid.Column="0"
-                            Path="/Assets/barchart.svg" />
-                        <TextBlock
-                            Classes="sideBar"
-                            Grid.Column="1"
-                            Text="Total Food Waste 2021" />
-                        <Svg
-                            Classes="sideBarButtonAddIcon"
-                            Grid.Column="2"
-                            Path="/Assets/plus.svg" />
-                    </Grid>
-                </Button>
 
-                <Button Classes="sideBar" Command="{Binding GlobalTotalWasteTrendCommand}">
-                    <Grid ColumnDefinitions="Auto, *, Auto" Width="{Binding $parent[Button].Width}">
-                        <Svg
-                            Classes="sideBarButtonIcon"
-                            Grid.Column="0"
-                            Path="/Assets/linechart.svg" />
-                        <TextBlock
-                            Classes="sideBar"
-                            Grid.Column="1"
-                            Text="Global Food Waste Trend" />
-                        <Svg
-                            Classes="sideBarButtonAddIcon"
-                            Grid.Column="2"
-                            Path="/Assets/plus.svg" />
-                    </Grid>
-                </Button>
+                <StackPanel HorizontalAlignment="Center">
+                    <Button Classes="sideBar" Command="{Binding TotalWasteByFoodCategoryAndYearCommand}">
+                        <Grid ColumnDefinitions="Auto, *, Auto" Width="{Binding $parent[Button].Width}">
+                            <Svg
+                                Classes="sideBarButtonIcon"
+                                Grid.Column="0"
+                                Path="/Assets/barchart.svg" />
+                            <TextBlock
+                                Classes="sideBar"
+                                Grid.Column="1"
+                                Text="Total Food Waste 2021" />
+                            <Svg
+                                Classes="sideBarButtonAddIcon"
+                                Grid.Column="2"
+                                Path="/Assets/plus.svg" />
+                        </Grid>
+                    </Button>
 
-                <Button Classes="sideBar" Command="{Binding GlobalTotalWasteHeatCommand}">
-                    <Grid ColumnDefinitions="Auto, *, Auto" Width="{Binding $parent[Button].Width}">
-                        <Svg
-                            Classes="sideBarButtonIcon"
-                            Grid.Column="0"
-                            Path="/Assets/map.svg" />
-                        <TextBlock
-                            Classes="sideBar"
-                            Grid.Column="1"
-                            Text="Food Waste Heat Map 2024" />
-                        <Svg
-                            Classes="sideBarButtonAddIcon"
-                            Grid.Column="2"
-                            Path="/Assets/plus.svg" />
-                    </Grid>
-                </Button>
+                    <Button Classes="sideBar" Command="{Binding GlobalTotalWasteTrendCommand}">
+                        <Grid ColumnDefinitions="Auto, *, Auto" Width="{Binding $parent[Button].Width}">
+                            <Svg
+                                Classes="sideBarButtonIcon"
+                                Grid.Column="0"
+                                Path="/Assets/linechart.svg" />
+                            <TextBlock
+                                Classes="sideBar"
+                                Grid.Column="1"
+                                Text="Global Food Waste Trend" />
+                            <Svg
+                                Classes="sideBarButtonAddIcon"
+                                Grid.Column="2"
+                                Path="/Assets/plus.svg" />
+                        </Grid>
+                    </Button>
+
+                    <Button Classes="sideBar" Command="{Binding GlobalTotalWasteHeatCommand}">
+                        <Grid ColumnDefinitions="Auto, *, Auto" Width="{Binding $parent[Button].Width}">
+                            <Svg
+                                Classes="sideBarButtonIcon"
+                                Grid.Column="0"
+                                Path="/Assets/map.svg" />
+                            <TextBlock
+                                Classes="sideBar"
+                                Grid.Column="1"
+                                Text="Food Waste Heat Map 2024" />
+                            <Svg
+                                Classes="sideBarButtonAddIcon"
+                                Grid.Column="2"
+                                Path="/Assets/plus.svg" />
+                        </Grid>
+                    </Button>
+
+                    <Button Classes="sideBar" Command="{Binding YearlyTrendByFoodCategoryCommand}">
+                        <Grid ColumnDefinitions="Auto, *, Auto" Width="{Binding $parent[Button].Width}">
+                            <Svg
+                                Classes="sideBarButtonIcon"
+                                Grid.Column="0"
+                                Path="/Assets/linechart.svg" />
+                            <TextBlock
+                                Classes="sideBar"
+                                Grid.Column="1"
+                                Text="Food Category Waste Trend" />
+                            <Svg
+                                Classes="sideBarButtonAddIcon"
+                                Grid.Column="2"
+                                Path="/Assets/plus.svg" />
+                        </Grid>
+                    </Button>
+                    <Button Classes="sideBar" Command="{Binding ProportionOfWasteByCategoryAndYearCommand}">
+                        <Grid ColumnDefinitions="Auto, *, Auto" Width="{Binding $parent[Button].Width}">
+                            <Svg
+                                Classes="sideBarButtonIcon"
+                                Grid.Column="0"
+                                Path="/Assets/piechart.svg" />
+                            <TextBlock
+                                Classes="sideBar"
+                                Grid.Column="1"
+                                Text="Food Category Waste 2024" />
+                            <Svg
+                                Classes="sideBarButtonAddIcon"
+                                Grid.Column="2"
+                                Path="/Assets/plus.svg" />
+                        </Grid>
+                    </Button>
+                </StackPanel>
+
 
 
             </StackPanel>
@@ -145,6 +182,7 @@
             </Grid>
             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                 <ItemsControl
+                    HorizontalAlignment="Center"
                     ItemsSource="{Binding Charts}"
                     Margin="20,0"
                     x:Name="ChartsPanel">

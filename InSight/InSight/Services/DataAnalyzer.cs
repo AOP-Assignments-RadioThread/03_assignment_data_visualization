@@ -7,6 +7,7 @@ using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Avalonia;
 using LiveChartsCore.SkiaSharpView.Drawing.Geometries;
+using LiveChartsCore.SkiaSharpView.Extensions;
 
 namespace InSight.Services;
 
@@ -119,4 +120,72 @@ public class DataAnalyzer
         var chartData = new HeatMapData("Total Waste Heat Map 2024", new HeatLandSeries[]{new HeatLandSeries{Lands = lands}});
         return chartData;
     }
+
+
+    public ChartData WasteByFoodCategoryTrend(List<FoodWasteData> foodWasteData)
+    {
+        var grouped = foodWasteData
+            .GroupBy(d => new { d.Year, d.FoodCategory })
+            .Select(g => new
+            {
+                Year = g.Key.Year,
+                Category = g.Key.FoodCategory,
+                TotalWaste = Math.Round(g.Sum(x => x.TotalWaste), 2)
+            })
+            .ToList();
+
+        var allYears = grouped.Select(x => x.Year).Distinct().OrderBy(y => y).ToList();
+        var allCategories = grouped.Select(x => x.Category).Distinct().ToList();
+
+        var series = allCategories.Select(category =>
+        {
+            var valuesByYear = allYears.Select(year =>
+            {
+                var data = grouped.FirstOrDefault(g => g.Year == year && g.Category == category);
+                return data?.TotalWaste ?? 0;
+            }).ToArray();
+
+            return new LineSeries<double>
+            {
+                Name = category,
+                Values = valuesByYear,
+                GeometrySize = 5
+            };
+        }).ToArray();
+
+        var chartData = new CartesianChartData(
+            "Waste Trend by Food Category Over Years",
+            series,
+            new Axis[] { new Axis { Labels = allYears.Select(y => y.ToString()).ToArray(), Name = "Year", TextSize = 10 } },
+            new Axis[] { new Axis { Name = "Total Waste (tons)" } }
+        );
+
+        return chartData;
+    }
+
+    public ChartData ProportionOfWasteByCategoryAndYear(List<FoodWasteData> foodWasteData)
+    {
+        var data = foodWasteData
+            .Where(d => d.Year == 2024)
+            .GroupBy(d => d.FoodCategory)
+            .Select(g => new
+            {
+                Category = g.Key,
+                TotalWaste = Math.Round(g.Sum(x => x.TotalWaste), 2, MidpointRounding.AwayFromZero)
+            })
+            .OrderByDescending(x => x.TotalWaste)
+            .ToList();
+
+        // Convert to PieSeries manually with labels
+        var series = data.Select(d => new PieSeries<double>
+        {
+            Name = d.Category,
+            Values = new[] { d.TotalWaste },
+            DataLabelsSize = 14,
+            DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
+            DataLabelsFormatter = point => $"{d.Category}"
+        }).ToArray();
+
+        return new PieChartData("Food Waste Proportions by Category in 2024", series);
+    }   
 }
