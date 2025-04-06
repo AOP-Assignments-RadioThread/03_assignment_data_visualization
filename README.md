@@ -1,6 +1,6 @@
-# 🍽️ InSight — Data Visualization App
+# InSight — Data Visualization App
 
-## 📊 Overview
+## Overview
 
 **InSight** is a desktop data visualization app built with **Avalonia** and **LiveCharts2**, following the **MVVM** architecture and applying **SOLID principles**. The app reads a food waste dataset (2018–2024) and helps users gain insights by displaying data through customizable, interactive charts.
 
@@ -38,7 +38,7 @@ Designed for ease of use, the app features a modern UI with a dynamic dashboard,
 
 ## How to Use
 
-- Press the Import button on the top left;
+- Press the Import button on the top left.
 
 - Open the .csv file provided in the Assets folder.
 
@@ -48,7 +48,7 @@ Designed for ease of use, the app features a modern UI with a dynamic dashboard,
 
 - There are also undo/redo buttons on the top right.
   
-- You can scroll up and down to see al the charts, try to keep the mouse pointer outside of the charts when you scroll, our use the scroll bar.
+- You can scroll up and down to see all the charts, try to keep the mouse pointer outside of the charts when you scroll, or use the scroll bar.
 
 ---
 
