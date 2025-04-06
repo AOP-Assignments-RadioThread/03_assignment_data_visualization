@@ -38,15 +38,17 @@ Designed for ease of use, the app features a modern UI with a dynamic dashboard,
 
 ## How to Use
 
-1. Press the Import button on the top left;
+- Press the Import button on the top left;
 
-2. Open the .csv file provided in the Assets folder.
+- Open the .csv file provided in the Assets folder.
 
-3. Choose a chart from the left side.
+- Choose a chart from the left side.
 
-4. You can remove the charts by pressing the X button.
+- You can remove the charts by pressing the X button.
 
-5. There are also undo/redo buttons on the top right.
+- There are also undo/redo buttons on the top right.
+  
+- You can scroll up and down to see al the charts, try to keep the mouse pointer outside of the charts when you scroll, our use the scroll bar.
 
 ---
 
