@@ -78,6 +78,6 @@ Designed for ease of use, the app features a modern UI with a dynamic dashboard,
 
 ## Authors
 
-Victor Petrica
-Vadim Iov
-Vlad Tomulescu
+- Victor Petrica
+- Vadim Iov
+- Vlad Tomulescu
